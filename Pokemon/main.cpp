@@ -2,7 +2,17 @@
 #include <string>
 using namespace std;
 
+enum PokemonChoice 
+{
+    Charmander =0, 
+    Bulbasaur=1,
+    Squirtle=2,
+    InvalidChoice=3
+};
+
 int main() {
+    PokemonChoice chosen_pokemon = InvalidChoice;
+    
     string player_name;
     string chosen_pokemon;
 
@@ -26,30 +36,32 @@ int main() {
     cout << "Professor Oak: So, which one will it be? Enter the number of your choice: ";
     cin >> choice;
 
+   
+
     switch (choice) {
     case 1:
-        chosen_pokemon = "Charmander";
+        chosen_pokemon = Charmander;
         cout << "Professor Oak: A fiery choice! Charmander is yours!"<<endl;
         break;
 
     case 2:
-        chosen_pokemon = "Bulbasaur";
+        chosen_pokemon = Bulbasaur;
         cout << "Professor Oak: A fine choice! Bulbasaur is always ready to grow on you!"<<endl;
         break;
 
     case 3:
-        chosen_pokemon = "Squirtle";
+        chosen_pokemon = Squirtle;
         cout << "Professor Oak: Splendid! Squirtle will keep you cool under pressure!"<<endl;
         break;
 
     default:
         cout << "Professor Oak: Hmm, that doesn't seem right. Let me choose for you..."<<endl;
-        chosen_pokemon = "Pikachu"; 
+        chosen_pokemon = InvalidChoice; 
         cout << "Professor Oak: Just kidding! Let's go with Pikachu, the surprise guest!"<<endl;
         break;
     }
 
-    cout << "Professor Oak: " << chosen_pokemon << " and you, "
+    cout << "Professor Oak: " <<  (chosen_pokemon == Charmander ? "Charmander" : chosen_pokemon == Bulbasaur ? "Bulbasaur" : "Squirtle") << " and you, "
         << player_name << ", are going to be the best of friends!"<<endl;
     cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of Pokemon!"<<endl;
 
