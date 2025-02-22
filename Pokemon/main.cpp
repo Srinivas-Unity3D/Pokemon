@@ -1,76 +1,12 @@
 #include "PokemonChoice.hpp"
 #include "PokemonType.hpp"
 #include "Utility.hpp"
+#include "Player.hpp"
+#include "Pokemon.hpp"
 #include <iostream>
 #include <limits> 
 #include <string>
 using namespace std;
-
-class Pokemon {
-public:
-    string name;
-    PokemonType type;
-    int health;
-
-    Pokemon() {
-        name = "Unknown";
-        type = PokemonType::NORMAL;
-        health = 50;
-    }
-
-    Pokemon(string p_name, PokemonType p_type, int p_health) {
-        name = p_name;
-        type = p_type;
-        health = p_health;
-    }
-
-    Pokemon(const Pokemon& other) {
-        name = other.name;
-        type = other.type;
-        health = other.health;
-    }
-
-    ~Pokemon() {
-        // Destructor message removed
-    }
-
-    void attack() { cout << name << " attacks with a powerful move!\n"; }
-};
-
-class Player {
-public:
-    string name;
-    Pokemon chosenPokemon;
-
-    Player() {
-        name = "Trainer";
-        chosenPokemon = Pokemon(); 
-    }
-
-    Player(string p_name, Pokemon p_chosenPokemon) {
-        name = p_name;
-        chosenPokemon = p_chosenPokemon;
-    }
-
-    void choosePokemon(int choice) {
-        switch ((PokemonChoice)choice) {
-        case PokemonChoice::CHARMANDER:
-            chosenPokemon = Pokemon("Charmander", PokemonType::FIRE, 100);
-            break;
-        case PokemonChoice::BULBASAUR:
-            chosenPokemon = Pokemon("Bulbasaur", PokemonType::GRASS, 100);
-            break;
-        case PokemonChoice::SQUIRTLE:
-            chosenPokemon = Pokemon("Squirtle", PokemonType::WATER, 100);
-            break;
-        default:
-            chosenPokemon = Pokemon("Pikachu", PokemonType::ELECTRIC, 100);
-            break;
-        }
-        cout << "Player " << name << " chose " << chosenPokemon.name << "!\n";
-        Utility::waitForEnter(); 
-    }
-};
 
 class ProfessorOak {
 public:

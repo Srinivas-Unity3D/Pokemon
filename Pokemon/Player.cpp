@@ -2,6 +2,7 @@
 #include "PokemonChoice.hpp"
 #include "PokemonType.hpp"
 #include "Utility.hpp"
+#include "Pokemon.hpp"
 #include <iostream>
 using namespace std;
 
