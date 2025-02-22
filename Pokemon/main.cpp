@@ -1,6 +1,8 @@
 #include <iostream>
 #include <limits> 
 #include <string>
+#include "header.hpp"
+
 using namespace std;
 
 void clearConsole() {
@@ -203,7 +205,7 @@ public:
     }
 };
 
-void gameLoop(Player& player) {
+void gameLoop(Player &player) {
     int choice;
     bool keepPlaying = true;
 
