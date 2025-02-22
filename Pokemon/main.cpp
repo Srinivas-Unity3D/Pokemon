@@ -1,7 +1,6 @@
 #include "PokemonType.hpp"
 #include "PokemonChoice.hpp"
 #include "Utility.hpp"
-#include "Player.hpp"
 #include <iostream>
 #include <limits> 
 #include <string>
@@ -40,6 +39,9 @@ public:
 
     void attack() { std::cout << name << " attacks with a powerful move!\n"; }
 };
+
+#include "Player.hpp"
+
 
 class ProfessorOak {
 public:
