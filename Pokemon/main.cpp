@@ -5,38 +5,55 @@ using namespace std;
 
 enum class PokemonChoice 
 {
-    Charmander =0, 
-    Bulbasaur=1,
-    Squirtle=2,
-    InvalidChoice=3
+    Charmander =1, 
+    Bulbasaur,
+    Squirtle,
+    PIKACHU
 };
 
 enum class PokemonType
 {
-    Fire, 
-    Electric, 
-    Water, 
-    Earth, 
-    Normal
+    FIRE,
+    GRASS,
+    WATER,
+    ELECTRIC,
+    NORMAL
 };
 
 class Pokemon
 {
 public:
-	string name;
-	PokemonType type;
+    string name;
+    PokemonType type;
     int health;
 
-    Pokemon() 
+    Pokemon()
     {
-    
+        name = "Pikachu";
+        type = PokemonType::ELECTRIC;
+        health = 10;
+        cout << "A new Pokemnon has been created with the defualt constructor!" << endl;
     }
 
-    Pokemon(string p_name, PokemonType p_type, int p_health) 
+    Pokemon(string p_name, PokemonType p_type, int p_health)
     {
         name = p_name;
         type = p_type;
         health = p_health;
+        cout << "A new Pokemon named " << name << " has been created!" << endl;
+    }
+
+    Pokemon(const Pokemon &other) 
+    {
+        name = other.name;
+        type = other.type;
+        health = other.health;
+        cout << "A new Pokemon has been copied from " << other.name << "!" << endl;
+    }
+
+    ~Pokemon() 
+    {
+        cout << name << " has released." << endl;
     }
 
     void attack() 
@@ -51,19 +68,32 @@ public:
     string p_name;
     Pokemon p_chosenPokemon;
 
+    Player() 
+    {
+        p_name = "Trainer";
+        p_chosenPokemon = Pokemon();
+        cout << "A new player named " << p_name << " has been created." << endl;
+    }
+
+    Player(string name, Pokemon chosenPokemon) {
+        p_name = name;
+        p_chosenPokemon = chosenPokemon;
+        cout << "Player " << p_name << " has been created!"<<endl;
+    }
+
     void choosePokemon(int choice) {
         switch ((PokemonChoice)choice) {
         case PokemonChoice::Charmander:
-            p_chosenPokemon = Pokemon("Charmander", PokemonType::Fire, 100);
+            p_chosenPokemon = Pokemon("Charmander", PokemonType::FIRE, 100);
             break;
         case PokemonChoice::Bulbasaur:
-            p_chosenPokemon = Pokemon("Bulbasaur", PokemonType::Earth, 100);
+            p_chosenPokemon = Pokemon("Bulbasaur", PokemonType::GRASS, 100);
             break;
         case PokemonChoice::Squirtle:
-            p_chosenPokemon = Pokemon("Squirtle", PokemonType::Water, 100);
+            p_chosenPokemon = Pokemon("Squirtle", PokemonType::WATER, 100);
             break;
         default:
-            p_chosenPokemon = Pokemon("Pikachu", PokemonType::Electric, 100);
+            p_chosenPokemon = Pokemon("Pikachu", PokemonType::ELECTRIC, 100);
             break;
         }
         cout << "Player " << p_name << " chose " << p_chosenPokemon.name << "!" << endl;
@@ -74,6 +104,11 @@ class ProfessorOak
 {
 public:
     string p_name;
+
+    ProfessorOak(string name) {
+        p_name = name;
+    }
+
 
     void greetPlayer(Player &player) 
     {
@@ -105,23 +140,32 @@ public:
 
 int main() {
     
-    ProfessorOak professor;
-    Pokemon placeholderPokemon;
-    Player player;
+    Pokemon defaultPokemon; 
+    Pokemon charmander("Charmander", PokemonType::FIRE, 100);
+    cout << "Pokemon Details:\n";
+    cout << "Name: " << defaultPokemon.name << "\nType: " << (int)defaultPokemon.type << "\nHealth: " << defaultPokemon.health << endl;
+    cout << "Name: " << charmander.name << "\nType: " << (int)charmander.type << "\nHealth: " << charmander.health << endl;
 
-    placeholderPokemon.name = "Pikachu";
-    placeholderPokemon.type = PokemonType::Electric;
-    placeholderPokemon.health = 40;
+    Pokemon bulbasaur("Bulbasaur", PokemonType::GRASS, 100); 
+    Pokemon bulbasaurCopy = bulbasaur; 
+    cout << "Original Pokemon Health: " << bulbasaur.health << endl;
+    cout << "Copied Pokemon Health: " << bulbasaurCopy.health << endl;
 
-    player.p_name = "Trainer";
-    professor.p_name = "Professor Oak";
+    bulbasaurCopy.health = 80;
+    cout << "After Modification:"<<endl;
+    cout << "Original Pokemon Health: " << bulbasaur.health << endl;
+    cout << "Copied Pokemon Health: " << bulbasaurCopy.health << endl;
+
+    Pokemon squirtle("Squirtle", PokemonType::WATER, 100);
+
+    ProfessorOak professor("Professor Oak");
+    Player player("Ash", charmander);
 
     professor.greetPlayer(player);
     professor.offerPokemonChoices(player);
     
-    cout << "Professor Oak: " << player.p_chosenPokemon.name << " and you, " << player.p_name << ", are going to be the best of friends!\n";
-    cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of Pokemon!\n";
-    
+    cout << "Professor Oak: " << player.p_chosenPokemon.name << " and you, " << player.p_name << ", are going to be the best of friends!"<<endl;
+    cout << "Professor Oak: Your journey begins now! Get ready to explore the vast world of Pokemon!"<<endl;
     return 0;
 }
 
