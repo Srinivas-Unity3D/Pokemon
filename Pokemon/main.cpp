@@ -2,12 +2,23 @@
 #include "ProfessorOak.hpp"
 #include "PokemonType.hpp"
 #include "Game.h"
+#include "grass.hpp"
 #include <iostream>
 #include <limits> 
 #include <string>
 using namespace std;
 
+Grass forestGrass = {
+    "Forest",
+    {{"Pidgey", PokemonType::NORMAL, 40}, {"Caterpie", PokemonType::BUG, 35}},
+    70
+};
 
+Grass caveGrass = {
+    "Cave",
+    {{"Zubat", PokemonType::POISON, 30}, {"Geodude", PokemonType::ROCK, 50}},
+    80
+};
 
 int main() {
     Pokemon charmander("Charmander", PokemonType::FIRE, 100); 

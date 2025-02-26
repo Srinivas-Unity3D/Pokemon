@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "Utility.hpp"
 #include "Player.hpp"
+#include "PokemonType.hpp"
 #include <iostream>
 
 
