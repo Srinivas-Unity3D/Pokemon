@@ -1,13 +1,11 @@
-#include "Player.hpp"
-#include "Pokemon.hpp"
-#include "PokemonChoice.hpp"
-#include "PokemonType.hpp"
 #include "Utility.hpp"
 #include "ProfessorOak.hpp"
+#include "PokemonType.hpp"
 #include <iostream>
 #include <limits> 
 #include <string>
 using namespace std;
+
 
 
 void gameLoop(Player& player) {
