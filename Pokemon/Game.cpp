@@ -8,9 +8,9 @@ using namespace std;
 
 Game::Game() {
     forestGrass = { "Forest",
-                   {Pokemon("Pidgey", PokemonType::NORMAL, 40),
-                    Pokemon("Caterpie", PokemonType::BUG, 35),
-                    Pokemon("Zubat", PokemonType::POISON, 30)},
+                   {Pokemon("Pidgey", PokemonType::NORMAL, 40, 10),
+                    Pokemon("Caterpie", PokemonType::BUG, 35, 15),
+                    Pokemon("Zubat", PokemonType::POISON, 30, 20)},
                    70 };
 }
 
@@ -42,8 +42,9 @@ void Game::gameLoop(Player& player) {
             break;
         }
         case 2: {
-            cout << "You head to the PokeCenter, but Nurse Joy is out on a coffee "
-                "break. Guess your Pokémon will have to tough it out for now!\n";
+            cout << "You head to the PokeCenter.\\n";
+            player.chosenPokemon.heal();
+            cout << player.chosenPokemon.name << "'s health is fully restored!\\n";
             break;
         }
         case 3: {

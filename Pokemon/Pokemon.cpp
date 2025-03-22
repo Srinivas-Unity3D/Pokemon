@@ -11,10 +11,11 @@ Pokemon::Pokemon() {
     health = 50;
 }
 
-Pokemon::Pokemon(string p_name, PokemonType p_type, int p_health) {
+Pokemon::Pokemon(string p_name, PokemonType p_type, int p_health, int p_attackPower) {
     name = p_name;
     type = p_type;
-    health = p_health;
+    maxHealth = p_health;
+    attackPower = p_attackPower;
 }
 
 Pokemon::Pokemon(const Pokemon& other) {
@@ -29,7 +30,7 @@ Pokemon::~Pokemon() {
 
 void Pokemon:: attack(Pokemon& target) 
 {
-    int damage = 10;
+    int damage = attackPower;
     cout << name << " attacks " << target.name << " for " << damage << " damage!\\n";
     target.TakeDamage(damage);
 }
@@ -47,4 +48,9 @@ void Pokemon::TakeDamage(int damage)
 bool Pokemon::isFainted() const
 {
     return health <= 0;
+}
+
+void Pokemon::heal() 
+{
+    health = maxHealth;
 }
