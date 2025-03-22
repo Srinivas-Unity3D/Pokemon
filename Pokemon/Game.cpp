@@ -21,12 +21,12 @@ void Game::gameLoop(Player& player) {
 
     while (keepPlaying) {
         Utility::clearConsole();
-        std::cout << "\\nWhat would you like to do next, " << player.name << "?\\n";
-        std::cout << "1. Battle Wild Pokémon\\n";
-        std::cout << "2. Visit PokeCenter\\n";
-        std::cout << "3. Challenge Gyms\\n";
-        std::cout << "4. Enter Pokémon League\\n";
-        std::cout << "5. Quit\\n";
+        std::cout << "\nWhat would you like to do next, " << player.name << "?\n";
+        std::cout << "1. Battle Wild Pokémon\n";
+        std::cout << "2. Visit PokeCenter\n";
+        std::cout << "3. Challenge Gyms\n";
+        std::cout << "4. Enter Pokémon League\n";
+        std::cout << "5. Quit\n";
         std::cout << "Enter your choice: ";
         int choice;
         std::cin >> choice;
@@ -41,9 +41,9 @@ void Game::gameLoop(Player& player) {
             break;
         }
         case 2: {
-            std::cout << "You head to the PokeCenter.\\n";
+            std::cout << "You head to the PokeCenter.\n";
             player.chosenPokemon.heal(); 
-            std::cout << player.chosenPokemon.name << "'s health is fully restored!\\n";
+            std::cout << player.chosenPokemon.name << "'s health is fully restored!\n";
             break;
         }
         case 5: {
@@ -51,7 +51,7 @@ void Game::gameLoop(Player& player) {
             break;
         }
         default: {
-            std::cout << "That's not a valid choice. Try again!\\n";
+            std::cout << "That's not a valid choice. Try again!\n";
             break;
         }
         }
@@ -59,5 +59,5 @@ void Game::gameLoop(Player& player) {
         Utility::waitForEnter();
     }
 
-    std::cout << "Goodbye, " << player.name << "! Thanks for playing!\\n";
+    std::cout << "Goodbye, " << player.name << "! Thanks for playing!\n";
 }

@@ -8,7 +8,7 @@ using namespace std;
 
 void BattleManager::startBattle(Player &player, Pokemon &wildPokemon) 
 {
-    cout << "A wild " << wildPokemon.name << " appeared.\\n";
+    cout << "A wild " << wildPokemon.name << " appeared.\n";
     battle(player.chosenPokemon, wildPokemon);
 }
 
@@ -28,10 +28,10 @@ void BattleManager :: battle(Pokemon &playerPokemon, Pokemon &wildPokemon) {
     handleBattleOutcome(playerPokemon, playerPokemon.isFainted());
 
     if (playerPokemon.isFainted()) {
-        cout << playerPokemon.name << " has fainted! You lose the battle.\\n";
+        cout << playerPokemon.name << " has fainted! You lose the battle.\n";
     }
     else {
-        cout << "You defeated the wild " << wildPokemon.name << "!\\n";
+        cout << "You defeated the wild " << wildPokemon.name << "!\n";
     }
 
 }

@@ -31,7 +31,7 @@ Pokemon::~Pokemon() {
 void Pokemon:: attack(Pokemon& target) 
 {
     int damage = attackPower;
-    cout << name << " attacks " << target.name << " for " << damage << " damage!\\n";
+    cout << name << " attacks " << target.name << " for " << damage << " damage!\n";
     target.TakeDamage(damage);
 }
 
