@@ -16,12 +16,14 @@ Pokemon::Pokemon(string p_name, PokemonType p_type, int p_health, int p_attackPo
     type = p_type;
     maxHealth = p_health;
     attackPower = p_attackPower;
+    health = maxHealth;
 }
 
 Pokemon::Pokemon(const Pokemon& other) {
     name = other.name;
     type = other.type;
     health = other.health;
+    attackPower = other.attackPower;
 }
 
 Pokemon::~Pokemon() {

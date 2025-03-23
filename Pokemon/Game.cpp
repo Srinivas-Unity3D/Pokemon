@@ -9,9 +9,9 @@ using namespace std;
 
 Game::Game() {
     forestGrass = { "Forest",
-                   {Pokemon("Pidgey", PokemonType::NORMAL, 40, 10),
-                    Pokemon("Caterpie", PokemonType::BUG, 35, 15),
-                    Pokemon("Zubat", PokemonType::POISON, 30, 20)},
+                   {Pokemon("Pidgey", PokemonType::NORMAL, 50, 10),
+                    Pokemon("Caterpie", PokemonType::BUG, 60, 15),
+                    Pokemon("Zubat", PokemonType::POISON, 80, 20)},
                    70 };
 }
 
@@ -22,10 +22,10 @@ void Game::gameLoop(Player& player) {
     while (keepPlaying) {
         Utility::clearConsole();
         std::cout << "\nWhat would you like to do next, " << player.name << "?\n";
-        std::cout << "1. Battle Wild Pokémon\n";
+        std::cout << "1. Battle Wild Pokemon\n";
         std::cout << "2. Visit PokeCenter\n";
         std::cout << "3. Challenge Gyms\n";
-        std::cout << "4. Enter Pokémon League\n";
+        std::cout << "4. Enter Pokemon League\n";
         std::cout << "5. Quit\n";
         std::cout << "Enter your choice: ";
         int choice;
