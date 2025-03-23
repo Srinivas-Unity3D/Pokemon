@@ -8,41 +8,58 @@ using namespace std;
 
 void BattleManager::startBattle(Player &player, Pokemon &wildPokemon) 
 {
+    battleState.playerPokemon = &player.chosenPokemon;
+    battleState.wildPokemon = &wildPokemon;
+    battleState.playerTurn = true;
+    battleState.battleOngoing = true;
+
     cout << "A wild " << wildPokemon.name << " appeared.\n";
-    battle(player.chosenPokemon, wildPokemon);
+    battle();
 }
 
 
-void BattleManager :: battle(Pokemon &playerPokemon, Pokemon &wildPokemon) {
-
-    while (!playerPokemon.isFainted() && !wildPokemon.isFainted()) {
-        playerPokemon.attack(wildPokemon); 
-
-        if (!wildPokemon.isFainted()) {
-            wildPokemon.attack(playerPokemon); 
+void BattleManager :: battle() 
+{
+    while (battleState.battleOngoing)
+    {
+        if (battleState.playerTurn) 
+        {
+            battleState.playerPokemon->attack(*battleState.wildPokemon);
+        }
+        else 
+        {
+            battleState.wildPokemon->attack(*battleState.playerPokemon);
         }
 
+        updateBattleState();
+
+        battleState.playerTurn = !battleState.playerTurn;
+
         Utility::waitForEnter();
     }
 
-    handleBattleOutcome(playerPokemon, playerPokemon.isFainted());
-
-    if (playerPokemon.isFainted()) {
-        cout << playerPokemon.name << " has fainted! You lose the battle.\n";
-    }
-    else {
-        cout << "You defeated the wild " << wildPokemon.name << "!\n";
-    }
-
+    handleBattleOutcome();
 }
 
-void BattleManager::handleBattleOutcome(Pokemon &palyerChosenPokemon, bool playerWon) {
-    if (playerWon) {
-        cout << palyerChosenPokemon.name << " is victorious! Keep an eye on your Pokémon's health.\n";
+void BattleManager::handleBattleOutcome() {
+
+    if (battleState.playerPokemon->isFainted()) 
+    {
+        cout << battleState.playerPokemon->name << " has fainted! You lose the battle.\n";
     }
     else {
-        cout << "Oh no! " << palyerChosenPokemon.name << " fainted! You need to visit the PokeCenter.\n";
-        Utility::waitForEnter();
-        cout << "Game Over.\n";
+        cout << "You defeated the wild " << battleState.wildPokemon->name << "!\n";
+    }
+}
+
+void BattleManager::updateBattleState() 
+{
+    if (battleState.playerPokemon->isFainted()) 
+    {
+        battleState.battleOngoing = false;
+    }
+    else if(battleState.wildPokemon->isFainted())
+    {
+        battleState.battleOngoing = false;
     }
 }

@@ -8,7 +8,7 @@ using namespace std;
 Pokemon::Pokemon() {
     name = "Unknown";
     type = PokemonType::NORMAL;
-    health = 50;
+    health = 100;
 }
 
 Pokemon::Pokemon(string p_name, PokemonType p_type, int p_health, int p_attackPower) {
