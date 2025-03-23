@@ -1,6 +1,6 @@
-#include "Pokemon.hpp"
-#include "BattleManager.hpp"
-#include "Utility.hpp"
+#include "../../include/Pokemon/Pokemon.hpp"
+#include "../../include/Battle/BattleManager.hpp"
+#include "../../include/Utility/Utility.hpp"
 #include <iostream>
 
 using namespace std;

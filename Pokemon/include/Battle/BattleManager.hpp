@@ -1,6 +1,6 @@
 #pragma once
-#include "Pokemon.hpp"
-#include "Player.hpp"
+#include "../Pokemon/Pokemon.hpp"
+#include "../Character/Player/Player.hpp"
 #include "BattleState.hpp"
 
 

@@ -1,5 +1,5 @@
-#include "ProfessorOak.hpp"
-#include "Utility.hpp"
+#include "../../include/Character/ProfessorOak.hpp"
+#include "../../include/Utility/Utility.hpp"
 #include <iostream>
 #include <string>
 using namespace std;

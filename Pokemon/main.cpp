@@ -1,8 +1,9 @@
-#include "Utility.hpp"
-#include "ProfessorOak.hpp"
-#include "PokemonType.hpp"
-#include "Game.h"
-#include "grass.hpp"
+#include "include/Utility/Utility.hpp"
+#include "include/Character/ProfessorOak.hpp"
+#include "include/Pokemon/PokemonType.hpp"
+#include "include/Main/Game.h"
+#include "include/Pokemon/grass.hpp"
+#include "include/Character/Player/Player.hpp"
 #include <iostream>
 #include <limits> 
 #include <string>
