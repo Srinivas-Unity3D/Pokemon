@@ -2,31 +2,34 @@
 #include <string>
 using namespace std;
 
-enum class PokemonType;
-
-class  Pokemon 
+namespace N_Pokemon
 {
-public:
-    string name;
-    PokemonType type;
-    int health;
-    int maxHealth;
-    int attackPower;
+    enum class PokemonType;
 
-    Pokemon();
+    class  Pokemon
+    {
+    public:
+        string name;
+        PokemonType type;
+        int health;
+        int maxHealth;
+        int attackPower;
 
-    Pokemon(string p_name, PokemonType p_type, int p_health, int attackPower);
+        Pokemon();
 
-    Pokemon(const Pokemon& other);
+        Pokemon(string p_name, PokemonType p_type, int p_health, int attackPower);
 
-    ~Pokemon();
+        Pokemon(const Pokemon& other);
 
-    void attack(Pokemon& target);
+        ~Pokemon();
 
-    void TakeDamage(int damage);
-   
-    bool isFainted() const;
+        void attack(Pokemon& target);
 
-    void heal();
-   
-};
+        void TakeDamage(int damage);
+
+        bool isFainted() const;
+
+        void heal();
+
+    };
+}

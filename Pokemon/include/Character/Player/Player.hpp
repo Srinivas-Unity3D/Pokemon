@@ -4,14 +4,19 @@
 #include "../../Pokemon/Pokemon.hpp"
 
 using namespace std;
+using namespace N_Pokemon;
 
-class Player {
-public:
-    string name;
-    Pokemon chosenPokemon;
+namespace N_Player 
+{
+    class Player {
+    public:
+        string name;
+        Pokemon chosenPokemon;
 
-    Player(); 
-    Player(string p_name, Pokemon p_chosenPokemon); 
+        Player();
+        Player(string p_name, Pokemon p_chosenPokemon);
 
-    void choosePokemon(int choice); 
-};
+        void choosePokemon(int choice);
+    };
+}
+

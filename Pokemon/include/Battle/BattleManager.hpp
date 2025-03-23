@@ -3,16 +3,22 @@
 #include "../Character/Player/Player.hpp"
 #include "BattleState.hpp"
 
+using namespace N_Player;
+using namespace N_Pokemon;
 
-class BattleManager 
+
+namespace N_Battle 
 {
-public:
-	void startBattle(Player &player, Pokemon &wildPokemon);
+	class BattleManager
+	{
+	public:
+		void startBattle(Player& player, Pokemon& wildPokemon);
 
-private:
-	BattleState battleState;
+	private:
+		BattleState battleState;
 
-	void battle();
-	void handleBattleOutcome();
-	void updateBattleState();
-};
+		void battle();
+		void handleBattleOutcome();
+		void updateBattleState();
+	};
+}

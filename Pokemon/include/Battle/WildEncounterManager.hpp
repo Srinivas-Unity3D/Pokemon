@@ -1,9 +1,13 @@
 #pragma once
 #include <vector>
 #include "../Pokemon/grass.hpp" 
+using namespace N_Pokemon;
 
-class WildEncounterManager {
-public:
-	WildEncounterManager();
-	Pokemon getRandomPokemonFromGrass(const Grass& grass);
-};
+namespace N_Battle
+{
+	class WildEncounterManager {
+	public:
+		WildEncounterManager();
+		Pokemon getRandomPokemonFromGrass(const Grass& grass);
+	};
+}
