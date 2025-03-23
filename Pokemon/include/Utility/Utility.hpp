@@ -1,6 +1,5 @@
 #pragma once
 
-
 namespace N_Utility
 {
 	class Utility {

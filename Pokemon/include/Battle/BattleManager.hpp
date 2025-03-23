@@ -1,10 +1,8 @@
 #pragma once
-#include "../Pokemon/Pokemon.hpp"
 #include "../Character/Player/Player.hpp"
 #include "BattleState.hpp"
 
 using namespace N_Player;
-using namespace N_Pokemon;
 
 
 namespace N_Battle 

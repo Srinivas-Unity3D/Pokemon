@@ -1,5 +1,4 @@
 #pragma once
-#include <string>
 #include "../../Pokemon/PokemonType.hpp"
 #include "../../Pokemon/Pokemon.hpp"
 

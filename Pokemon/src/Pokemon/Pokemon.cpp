@@ -1,7 +1,6 @@
 #include "../../include/Pokemon/Pokemon.hpp"
 #include "../../include/Pokemon/PokemonType.hpp"
 #include <iostream>
-using namespace std;
 
 namespace N_Pokemon
 {

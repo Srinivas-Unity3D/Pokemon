@@ -1,4 +1,3 @@
-#include "../../../include/Pokemon/PokemonType.hpp"
 #include "../../../include/Pokemon/PokemonChoice.hpp"
 #include "../../../include/Character/Player/Player.hpp"
 #include "../../../include/Utility/Utility.hpp"

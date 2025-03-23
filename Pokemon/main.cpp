@@ -1,16 +1,9 @@
-#include "include/Utility/Utility.hpp"
 #include "include/Character/ProfessorOak.hpp"
-#include "include/Pokemon/PokemonType.hpp"
 #include "include/Main/Game.h"
-#include "include/Pokemon/grass.hpp"
-#include "include/Character/Player/Player.hpp"
-#include <iostream>
 #include <limits> 
 #include <string>
-using namespace std;
 using namespace N_Character;
 using namespace N_Main;
-using namespace N_Player;
 
 
 int main() {

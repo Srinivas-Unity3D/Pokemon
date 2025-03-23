@@ -3,7 +3,6 @@
 #include "../../include/Utility/Utility.hpp"
 #include <iostream>
 
-using namespace std;
 
 namespace N_Battle
 {

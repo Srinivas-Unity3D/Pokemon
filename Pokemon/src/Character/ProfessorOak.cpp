@@ -1,10 +1,7 @@
 #include "../../include/Character/ProfessorOak.hpp"
 #include "../../include/Utility/Utility.hpp"
 #include <iostream>
-#include <string>
-using namespace std;
 using namespace N_Utility;
-using namespace N_Player;
 
 
 namespace N_Character 
@@ -60,18 +57,18 @@ namespace N_Character
             << "!, I am about to explain you about your upcoming grand "
             "adventure.\n";
         Utility::waitForEnter();
-        cout << "Professor Oak: You see, becoming a Pokémon Master is no easy "
+        cout << "Professor Oak: You see, becoming a Pokemon Master is no easy "
             "feat. It takes courage, wisdom, and a bit of luck!\n";
         Utility::waitForEnter();
         cout
             << "Professor Oak: Your mission, should you choose to accept it—and "
             "trust me, you really don’t have a choice—is to collect all the "
-            "Pokémon Badges and conquer the Pokémon League.\n";
+            "Pokemon Badges and conquer the Pokemon League.\n";
         Utility::waitForEnter();
 
         cout << "\n"
             << player.name
-            << ": Wait... that sounds a lot like every other Pokémon game "
+            << ": Wait... that sounds a lot like every other Pokemon game "
             "out there...\n";
         Utility::waitForEnter();
         cout << "Professor Oak: Shhh! Don't break the fourth wall, "
@@ -79,12 +76,12 @@ namespace N_Character
         Utility::waitForEnter();
 
         cout << "\nProfessor Oak: To achieve this, you’ll need to battle wild "
-            "Pokémon, challenge gym leaders, and of course, keep your "
-            "Pokémon healthy at the PokeCenter.\n";
+            "Pokemon, challenge gym leaders, and of course, keep your "
+            "Pokemon healthy at the PokeCenter.\n";
         Utility::waitForEnter();
-        cout << "Professor Oak: Along the way, you'll capture new Pokémon to "
+        cout << "Professor Oak: Along the way, you'll capture new Pokemon to "
             "strengthen your team. Just remember—there’s a limit to how "
-            "many Pokémon you can carry, so choose wisely!\n";
+            "many Pokemon you can carry, so choose wisely!\n";
         Utility::waitForEnter();
 
         cout << "\n"
@@ -97,7 +94,7 @@ namespace N_Character
         Utility::waitForEnter();
 
         cout << "\nProfessor Oak: So, what do you say? Are you ready to "
-            "become the next Pokémon Champion?\n";
+            "become the next Pokemon Champion?\n";
         Utility::waitForEnter();
         cout << "\n" << player.name << ": Ready as I’ll ever be, Professor!\n";
         Utility::waitForEnter();
