@@ -10,7 +10,7 @@ namespace N_Pokemon
 		Zubat::Zubat() :Pokemon("Zubat", PokemonType::POISON, 100, 40) {}
 		void Zubat::supersonic(Pokemon& target) 
 		{
-			cout << name << " uses suporsonic attack on " << target.name << "!\n";
+			cout << name << " uses suporsonic attack on " << target.getName() << "!\n";
 			target.TakeDamage(40);
 		}
 	}

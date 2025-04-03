@@ -12,7 +12,7 @@ namespace N_Pokemon
 
 		void Caterpie::bugBite(Pokemon& target) 
 		{
-			cout << name << " uses bugBite on " << target.name << "!\n";
+			cout << name << " uses bugBite on " << target.getName() << "!\n";
 			target.TakeDamage(20);
 		}
 	}
