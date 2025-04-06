@@ -48,7 +48,8 @@ namespace N_Battle
         {
             cout << battleState.playerPokemon->getName()<< " has fainted! You lose the battle.\n";
         }
-        else {
+        else 
+        {
             cout << "You defeated the wild " << battleState.wildPokemon->getName()<< "!\n";
         }
     }
