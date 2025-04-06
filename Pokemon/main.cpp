@@ -9,16 +9,20 @@ using namespace N_Main;
 int main() {
     Pokemon charmander("Charmander", PokemonType::FIRE, 100, 25); 
 
-    ProfessorOak professor("Professor Oak");
-    Player player("Ash", charmander);
+    ProfessorOak* professor = new ProfessorOak("Professor Oak");
+    Player* player = new Player("Ash", charmander);
 
-    professor.greetPlayer(player);
-    professor.offerPokemonChoices(player);
+    professor->greetPlayer(*player);
+    professor->offerPokemonChoices(*player);
 
-    professor.explainMainQuest(player);
+    professor->explainMainQuest(*player);
 
-    Game game;
-    game.gameLoop(player);
+    Game* game = new Game();
+    game->gameLoop(*player);
+
+    delete(professor);
+    delete(player);
+    delete(game);
 
     return 0;
 }
