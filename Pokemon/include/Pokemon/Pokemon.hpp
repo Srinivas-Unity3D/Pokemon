@@ -23,7 +23,7 @@ namespace N_Pokemon
 
         ~Pokemon();
 
-        virtual void attack(Pokemon& target) = 0;
+        virtual void attack(Pokemon* target) = 0;
 
         void TakeDamage(int damage);
 

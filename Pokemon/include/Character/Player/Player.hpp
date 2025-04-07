@@ -10,10 +10,10 @@ namespace N_Player
     class Player {
     public:
         string name;
-        Pokemon chosenPokemon;
+        Pokemon* chosenPokemon;
 
         Player();
-        Player(string p_name, Pokemon p_chosenPokemon);
+        Player(string p_name);
 
         void choosePokemon(int choice);
     };

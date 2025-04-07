@@ -8,13 +8,13 @@ namespace N_Pokemon
 	{
 		using namespace std;
 		Balbasaur::Balbasaur() :Pokemon("Balbasaur", PokemonType::GRASS, 100, 35) {}
-		void Balbasaur::vineWhip(Pokemon& target) 
+		void Balbasaur::vineWhip(Pokemon* target) 
 		{
-			cout << name << " uses vine whip on " << target.getName() << "!\n";
-			target.TakeDamage(35);
+			cout << name << " uses vine whip on " << target->getName() << "!\n";
+			target->TakeDamage(attackPower);
 		}
 
-		void Balbasaur::attack(Pokemon& target) 
+		void Balbasaur::attack(Pokemon* target) 
 		{
 			vineWhip(target);
 		}

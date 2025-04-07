@@ -23,6 +23,7 @@ namespace N_Pokemon
         name = other.name;
         type = other.type;
         health = other.health;
+        maxHealth = other.maxHealth;
         attackPower = other.attackPower;
     }
 

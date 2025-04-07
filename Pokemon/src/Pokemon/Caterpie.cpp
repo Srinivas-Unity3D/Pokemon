@@ -10,13 +10,13 @@ namespace N_Pokemon
 
 		Caterpie::Caterpie() :Pokemon("Caterpie", PokemonType::BUG, 100, 20) {}
 
-		void Caterpie::bugBite(Pokemon& target) 
+		void Caterpie::bugBite(Pokemon* target) 
 		{
-			cout << name << " uses bugBite on " << target.getName() << "!\n";
-			target.TakeDamage(20);
+			cout << name << " uses bugBite on " << target->getName() << "!\n";
+			target->TakeDamage(attackPower);
 		}
 
-		void Caterpie::attack(Pokemon& target) 
+		void Caterpie::attack(Pokemon* target) 
 		{
 			bugBite(target);
 		}
