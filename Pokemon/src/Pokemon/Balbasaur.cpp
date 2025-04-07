@@ -13,5 +13,10 @@ namespace N_Pokemon
 			cout << name << " uses vine whip on " << target.getName() << "!\n";
 			target.TakeDamage(35);
 		}
+
+		void Balbasaur::attack(Pokemon& target) 
+		{
+			vineWhip(target);
+		}
 	}
 }

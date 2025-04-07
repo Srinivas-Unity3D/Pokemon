@@ -30,12 +30,12 @@ namespace N_Pokemon
         // Destructor message removed
     }
 
-    void Pokemon::attack(Pokemon& target)
+    /*void Pokemon::attack(Pokemon& target)
     {
         int damage = attackPower;
         cout << name << " attacks " << target.name << " for " << damage << " damage!\n";
         target.TakeDamage(damage);
-    }
+    }*/
 
     void Pokemon::TakeDamage(int damage)
     {

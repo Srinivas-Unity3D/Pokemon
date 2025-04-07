@@ -14,5 +14,10 @@ namespace N_Pokemon
 			cout << name << " uses Flame Thrower on " << target.getName() << "!\n";
 			target.TakeDamage(35);
 		}
+
+		void Charmander::attack(Pokemon& target) 
+		{
+			flameBurst(target);
+		}
 	}
 }
