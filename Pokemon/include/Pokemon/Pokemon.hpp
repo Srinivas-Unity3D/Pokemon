@@ -32,6 +32,6 @@ namespace N_Pokemon
         void heal();
 
         string getName() const;
-
+        int getHealth() const;
     };
 }

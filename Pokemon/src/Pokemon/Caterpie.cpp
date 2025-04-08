@@ -1,5 +1,6 @@
 #include "../../include/Pokemon/Caterpie.hpp"
 #include "../../include/Pokemon/PokemonType.hpp"
+#include "../../include/Utility/Utility.hpp"
 #include <iostream>
 
 namespace N_Pokemon
@@ -12,8 +13,22 @@ namespace N_Pokemon
 
 		void Caterpie::bugBite(Pokemon* target) 
 		{
-			cout << name << " uses bugBite on " << target->getName() << "!\n";
+			cout << name << " used BugBite!\n";
+			N_Utility::Utility::waitForEnter();
+			cout << "...\n";
+			N_Utility::Utility::waitForEnter();
+
 			target->TakeDamage(attackPower);
+
+			if (target->isFainted())
+			{
+				cout << target->getName() << " fainted!\n";
+			}
+			else
+			{
+				cout << target->getName() << " has " << target->getHealth() << " HP left.\n";
+			}
+			N_Utility::Utility::waitForEnter();
 		}
 
 		void Caterpie::attack(Pokemon* target) 
