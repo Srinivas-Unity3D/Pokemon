@@ -1,6 +1,7 @@
 #include "../../include/Pokemon/Pikachu.hpp"
 #include "../../include/Pokemon/PokemonType.hpp"
 #include "../../include/Utility/Utility.hpp"
+#include "../../include/Pokemon/Move.hpp"
 #include <iostream>
 
 
@@ -10,7 +11,11 @@ namespace N_Pokemon
 	{
 		using namespace std;
 
-		Pikachu::Pikachu() :Pokemon("Pikachu", PokemonType::ELECTRIC, 100, 20) {}
+		Pikachu::Pikachu() :Pokemon("Pikachu", PokemonType::ELECTRIC, 100, {
+			Move("Thunder Shock", 20),
+			Move("TACKLE", 10)
+			}) {
+		}
 
 		void Pikachu::thunderShock(Pokemon* target) 
 		{
@@ -34,7 +39,7 @@ namespace N_Pokemon
 
 		void Pikachu::attack(Pokemon* target) 
 		{
-			thunderShock(target);
+			selectAndUseMove(target);
 		}
 	}
 }

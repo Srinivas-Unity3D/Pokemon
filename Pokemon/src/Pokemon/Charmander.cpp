@@ -1,6 +1,7 @@
 #include "../../include/Pokemon/Charmander.hpp"
 #include "../../include//Pokemon/PokemonType.hpp"
 #include "../../include/Utility/Utility.hpp"
+#include "../../include/Pokemon/Move.hpp"
 #include <iostream>
 
 namespace N_Pokemon 
@@ -8,7 +9,10 @@ namespace N_Pokemon
 	namespace N_Pokemons 
 	{
 		using namespace std;
-		Charmander::Charmander() :Pokemon("Charmander", PokemonType::FIRE, 100, 35) {}
+		Charmander::Charmander() :Pokemon("Charmander", PokemonType::FIRE, 100, {
+			Move("FLAME THROWER", 35),
+			Move("TACKLE", 10)
+			}) {}
 		
 		void Charmander::flameBurst(Pokemon* target) 
 		{
@@ -33,7 +37,7 @@ namespace N_Pokemon
 
 		void Charmander::attack(Pokemon* target) 
 		{
-			flameBurst(target);
+			selectAndUseMove(target);
 		}
 	}
 }

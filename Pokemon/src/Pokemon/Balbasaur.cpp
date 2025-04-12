@@ -1,6 +1,7 @@
 #include "../../include/Pokemon/Balbasaur.hpp"
 #include "../../include/Pokemon/PokemonType.hpp"
 #include "../../include/Utility/Utility.hpp"
+#include "../../include/Pokemon/Move.hpp"
 #include <iostream>
 
 namespace N_Pokemon 
@@ -8,7 +9,10 @@ namespace N_Pokemon
 	namespace N_Pokemons 
 	{
 		using namespace std;
-		Balbasaur::Balbasaur() :Pokemon("Balbasaur", PokemonType::GRASS, 100, 35) {}
+		Balbasaur::Balbasaur() :Pokemon("Balbasaur", PokemonType::GRASS, 100, {
+			Move("VINE WHIP", 25),
+			Move("TACKLE", 10)
+			}) {}
 		void Balbasaur::vineWhip(Pokemon* target)
 		{
 			cout << name << " used VINE WHIP!\n";
@@ -31,7 +35,7 @@ namespace N_Pokemon
 
 		void Balbasaur::attack(Pokemon* target) 
 		{
-			vineWhip(target);
+			selectAndUseMove(target);
 		}
 	}
 }

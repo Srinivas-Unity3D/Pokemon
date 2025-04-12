@@ -1,6 +1,7 @@
 #include "../../include/Pokemon/Pidgey.hpp";
 #include "../../include/Pokemon/PokemonType.hpp";
 #include "../../include/Utility/Utility.hpp"
+#include "../../include/Pokemon/Move.hpp"
 #include <iostream>
 
 namespace N_Pokemon
@@ -9,7 +10,10 @@ namespace N_Pokemon
 	{
 		using namespace std;
 
-		Pidgey::Pidgey() :Pokemon("Pidgey", PokemonType::NORMAL, 100, 35) {}
+		Pidgey::Pidgey() :Pokemon("Pidgey", PokemonType::NORMAL, 100, {
+			Move("WING ATTACK", 35),
+			Move("TACKLE", 10)
+			}) {}
 		
 		void Pidgey::wingAttack(Pokemon* target) 
 		{
@@ -35,7 +39,7 @@ namespace N_Pokemon
 
 		void Pidgey::attack(Pokemon* target) 
 		{
-			wingAttack(target);
+			selectAndUseMove(target);
 		}
 	}
 }

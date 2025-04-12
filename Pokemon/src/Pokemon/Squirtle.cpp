@@ -1,6 +1,7 @@
 #include "../../include/Pokemon/Squirtle.hpp"
 #include "../../include/Pokemon/PokemonType.hpp"
 #include "../../include/Utility/Utility.hpp"
+#include "../../include/Pokemon/Move.hpp"
 #include <iostream>
 
 namespace N_Pokemon
@@ -8,7 +9,11 @@ namespace N_Pokemon
 	namespace N_Pokemons 
 	{
 		using namespace std;
-		Squirtle::Squirtle() :Pokemon("Squirtle", PokemonType::WATER, 100, 35) {}
+		Squirtle::Squirtle() :Pokemon("Squirtle", PokemonType::WATER, 100, {
+			Move("Water Splash", 35),
+			Move("TACKLE", 10)
+			}) {
+		}
 		void Squirtle::waterSplash(Pokemon* target) 
 		{
 			cout << name << " used Water Splash!\n";
@@ -31,7 +36,7 @@ namespace N_Pokemon
 
 		void Squirtle::attack(Pokemon* target) 
 		{
-			waterSplash(target);
+			selectAndUseMove(target);
 		}
 	}
 }

@@ -1,6 +1,7 @@
 #include "../../include/Pokemon/Caterpie.hpp"
 #include "../../include/Pokemon/PokemonType.hpp"
 #include "../../include/Utility/Utility.hpp"
+#include "../../include/Pokemon/Move.hpp"
 #include <iostream>
 
 namespace N_Pokemon
@@ -9,7 +10,10 @@ namespace N_Pokemon
 	{
 		using namespace std;
 
-		Caterpie::Caterpie() :Pokemon("Caterpie", PokemonType::BUG, 100, 20) {}
+		Caterpie::Caterpie() :Pokemon("Caterpie", PokemonType::BUG, 100, {
+			Move("BugBite", 20),
+			Move("TACKLE", 10)
+			}) {}
 
 		void Caterpie::bugBite(Pokemon* target) 
 		{
@@ -33,7 +37,7 @@ namespace N_Pokemon
 
 		void Caterpie::attack(Pokemon* target) 
 		{
-			bugBite(target);
+			selectAndUseMove(target);
 		}
 	}
 }
