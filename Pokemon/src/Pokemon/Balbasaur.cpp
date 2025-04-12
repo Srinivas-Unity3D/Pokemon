@@ -33,9 +33,22 @@ namespace N_Pokemon
 			N_Utility::Utility::waitForEnter();
 		}
 
-		void Balbasaur::attack(Pokemon* target) 
+		void Balbasaur::attack(Move selectedMove, Pokemon* target) 
 		{
-			selectAndUseMove(target);
+			Pokemon::attack(selectedMove, target);
+
+			if (selectedMove.name == "VINE WHIP") {
+				int secondHitChance = rand() % 2;
+
+				if (secondHitChance == 1) {
+					Pokemon::attack(selectedMove, target);
+					std::cout << name << " hits again with a second " << selectedMove.name << "!\n";
+				}
+				else
+					std::cout << target->getName() << " dodged the second hit!\n";
+			}
+
+			//selectAndUseMove(target);
 		}
 	}
 }

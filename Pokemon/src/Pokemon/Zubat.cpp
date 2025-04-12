@@ -10,7 +10,7 @@ namespace N_Pokemon
 	{
 		using namespace std;
 		Zubat::Zubat() :Pokemon("Zubat", PokemonType::POISON, 100, {
-			Move("Super Sonic", 25),
+			Move("LEECH LIFE", 10),
 			Move("TACKLE", 10)
 			}) {}
 		void Zubat::supersonic(Pokemon* target) 
@@ -33,9 +33,19 @@ namespace N_Pokemon
 			N_Utility::Utility::waitForEnter();
 		}
 
-		void Zubat::attack(Pokemon* target) 
-		{
-			selectAndUseMove(target);
+		void Zubat::attack(Move selectedMove, Pokemon* target) {
+			Pokemon::attack(selectedMove, target);
+
+			if (selectedMove.name == "LEECH LIFE")
+			{
+				this->health += selectedMove.power * 0.5;
+
+				if (this->health > this->maxHealth)
+					this->health = this->maxHealth;
+
+				cout << "... and regained health!\n";
+			}
 		}
+
 	}
 }

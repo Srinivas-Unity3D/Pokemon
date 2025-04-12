@@ -47,18 +47,16 @@ namespace N_Pokemon
         // Destructor message removed
     }
 
-    void Pokemon::attack(Pokemon* target)
+   /* void Pokemon::attack(Pokemon* target)
     {
         int damage = attackPower;
         cout << name << " attacks " << target->name << " for " << damage << " damage!\n";
         target->TakeDamage(damage);
-    }
+    }*/
 
     void Pokemon::attack(Move selectedMove, Pokemon* target)
     {
-        int damage = selectedMove.power;
-        cout << name << " attacks " << target->name << " for " << damage << " damage!\n";
-        target->TakeDamage(damage);
+        target->TakeDamage(selectedMove.power);
     }
 
     void Pokemon::TakeDamage(int damage)
@@ -153,5 +151,10 @@ namespace N_Pokemon
         {
             cout << target->name << " has " << target->health << " HP left.\n";
         }     
+    }
+
+    void Pokemon::reduceAttackPower(int reducedDamage)
+    {
+        attackPower -= reducedDamage;
     }
 }

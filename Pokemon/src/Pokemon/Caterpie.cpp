@@ -11,7 +11,7 @@ namespace N_Pokemon
 		using namespace std;
 
 		Caterpie::Caterpie() :Pokemon("Caterpie", PokemonType::BUG, 100, {
-			Move("BugBite", 20),
+			Move("STICKY WEB", 10),
 			Move("TACKLE", 10)
 			}) {}
 
@@ -35,9 +35,15 @@ namespace N_Pokemon
 			N_Utility::Utility::waitForEnter();
 		}
 
-		void Caterpie::attack(Pokemon* target) 
-		{
-			selectAndUseMove(target);
+		void Caterpie::attack(Move selectedMove, Pokemon* target) {
+			Pokemon::attack(selectedMove, target);
+
+			if (selectedMove.name == "STICKY WEB")
+			{
+				int reducedDamage = 5;
+				target->reduceAttackPower(reducedDamage);
+				cout << target->getName() << "'s next attack will be reduced by " << reducedDamage << " damage!\n";
+			}
 		}
 	}
 }
