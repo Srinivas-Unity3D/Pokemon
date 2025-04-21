@@ -29,6 +29,7 @@ namespace N_Battle
             }
             else
             {
+              //  battleState.wildPokemon->attack(battleState.playerPokemon); fix it later
                 battleState.wildPokemon->selectAndUseMove(battleState.playerPokemon);
             }
 
