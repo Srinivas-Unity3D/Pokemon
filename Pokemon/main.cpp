@@ -1,28 +1,13 @@
-#include "Utility.hpp"
-#include "ProfessorOak.hpp"
-#include "PokemonType.hpp"
-#include "Game.h"
-#include "grass.hpp"
-#include <iostream>
+#include "include/Character/ProfessorOak.hpp"
+#include "include/Main/Game.h"
 #include <limits> 
 #include <string>
+using namespace N_Character;
+using namespace N_Main;
 
-using namespace std;
-
-Grass forestGrass = {
-    "Forest",
-    {{"Pidgey", PokemonType::NORMAL, 40}, {"Caterpie", PokemonType::BUG, 35}},
-    70
-};
-
-Grass caveGrass = {
-    "Cave",
-    {{"Zubat", PokemonType::POISON, 30}, {"Geodude", PokemonType::ROCK, 50}},
-    80
-};
 
 int main() {
-    Pokemon charmander("Charmander", PokemonType::FIRE, 100); 
+    Pokemon charmander("Charmander", PokemonType::FIRE, 100, 25); 
 
     ProfessorOak professor("Professor Oak");
     Player player("Ash", charmander);
