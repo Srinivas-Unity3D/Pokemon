@@ -8,10 +8,11 @@ namespace N_Pokemon
 		class Charmander:public Pokemon
 		{
 		private:
-			void flameBurst(Pokemon& target);
+			void flameBurst(Pokemon* target);
 
 		public:
 			Charmander();
+			void attack(Move selectedMove, Pokemon* target) override;
 		};
 	}
 }

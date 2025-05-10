@@ -8,7 +8,7 @@ namespace N_Pokemon
 	struct Grass
 	{
 		string environmentType;
-		vector<Pokemon> wildPokemonList;
+		vector<Pokemon*> wildPokemonList;
 		int encounterRate;
 	};
 }

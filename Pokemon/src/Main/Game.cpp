@@ -3,28 +3,43 @@
 #include "../../include/Utility/Utility.hpp"
 #include "../../include/Battle/WildEncounterManager.hpp"
 #include "../../include/Battle/BattleManager.hpp"
+#include "../../include/Pokemon/Pidgey.hpp"
+#include "../../include/Pokemon/Caterpie.hpp"
+#include "../../include/Pokemon/Zubat.hpp"
 #include <iostream>
 using namespace N_Utility;
 using namespace N_Battle;
-
+using namespace N_Pokemons;
 
 namespace N_Main
 {
 	Game::Game() {
 		forestGrass = { "Forest",
-					   {Pokemon("Pidgey", PokemonType::NORMAL, 50, 10),
-						Pokemon("Caterpie", PokemonType::BUG, 60, 15),
-						Pokemon("Zubat", PokemonType::POISON, 80, 20)},
+					   {new Pidgey(),
+						new Caterpie(),
+						new Zubat()},
 					   70 };
 	}
 
-	void Game::gameLoop(Player& player) {
+	Game::~Game() 
+	{
+		delete(wildPokemon);
+	}
+
+	void Game::visitPokemonCenter(Player* player) 
+	{
+		cout << "You head to the PokeCenter.\n";
+		player->chosenPokemon->heal();
+		cout << player->chosenPokemon->getName() << "'s health is fully restored!\n";
+	}
+
+	void Game::gameLoop(Player* player) {
 		BattleManager battleManager;
 		bool keepPlaying = true;
 
 		while (keepPlaying) {
 			Utility::clearConsole();
-			cout << "\nWhat would you like to do next, " << player.name << "?\n";
+			cout << "\nWhat would you like to do next, " << player->name << "?\n";
 			cout << "1. Battle Wild Pokemon\n";
 			cout << "2. Visit PokeCenter\n";
 			cout << "3. Challenge Gyms\n";
@@ -39,14 +54,13 @@ namespace N_Main
 			switch (choice) {
 			case 1: {
 				WildEncounterManager encounterManager;
-				Pokemon wildPokemon = encounterManager.getRandomPokemonFromGrass(forestGrass);
+				Pokemon* wildPokemon = encounterManager.getRandomPokemonFromGrass(forestGrass);
 				battleManager.startBattle(player, wildPokemon);
+				delete(wildPokemon);
 				break;
 			}
 			case 2: {
-				cout << "You head to the PokeCenter.\n";
-				player.chosenPokemon.heal();
-				cout << player.chosenPokemon.getName() << "'s health is fully restored!\n";
+				visitPokemonCenter(player);
 				break;
 			}
 			case 5: {
@@ -62,7 +76,7 @@ namespace N_Main
 			Utility::waitForEnter();
 		}
 
-		cout << "Goodbye, " << player.name << "! Thanks for playing!\n";
+		cout << "Goodbye, " << player->name << "! Thanks for playing!\n";
 	}
 }
 

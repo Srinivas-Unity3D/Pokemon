@@ -10,7 +10,8 @@ namespace N_Pokemon
 		public:
 			Squirtle();
 		private:
-			void waterSplash(Pokemon& target);
+			void waterSplash(Pokemon* target);
+			void attack(Move selectedMove, Pokemon* target) override;
 		};
 	}
 }

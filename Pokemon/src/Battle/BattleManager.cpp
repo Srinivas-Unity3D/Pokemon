@@ -3,18 +3,18 @@
 #include "../../include/Utility/Utility.hpp"
 #include <iostream>
 
-
 namespace N_Battle
 {
+    BattleState BattleManager::battleState;
 
-    void BattleManager::startBattle(Player& player, Pokemon& wildPokemon)
+    void BattleManager::startBattle(Player* player, Pokemon* wildPokemon)
     {
-        battleState.playerPokemon = &player.chosenPokemon;
-        battleState.wildPokemon = &wildPokemon;
+        battleState.playerPokemon = player->chosenPokemon;
+        battleState.wildPokemon = wildPokemon;
         battleState.playerTurn = true;
         battleState.battleOngoing = true;
 
-        cout << "A wild " << wildPokemon.getName() << " appeared.\n";
+        cout << "A wild " << wildPokemon->getName() << " appeared.\n";
         battle();
     }
 
@@ -25,11 +25,11 @@ namespace N_Battle
         {
             if (battleState.playerTurn)
             {
-                battleState.playerPokemon->attack(*battleState.wildPokemon);
+                battleState.playerPokemon->selectAndUseMove(battleState.wildPokemon);
             }
             else
             {
-                battleState.wildPokemon->attack(*battleState.playerPokemon);
+                battleState.wildPokemon->selectAndUseMove(battleState.playerPokemon);
             }
 
             updateBattleState();
@@ -64,5 +64,10 @@ namespace N_Battle
         {
             battleState.battleOngoing = false;
         }
+    }
+
+    void BattleManager::stopBattle() 
+    {
+        battleState.battleOngoing = false;
     }
 }
