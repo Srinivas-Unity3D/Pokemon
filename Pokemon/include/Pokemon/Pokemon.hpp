@@ -43,5 +43,7 @@ namespace N_Pokemon
         int getHealth() const;
 
         void selectAndUseMove(Pokemon* target);
+
+        void clearEffect();
     };
 }
