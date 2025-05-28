@@ -1,5 +1,5 @@
-#include "../../include/Pokemon/Pidgey.hpp";
-#include "../../include/Pokemon/PokemonType.hpp";
+#include "../../include/Pokemon/Pidgey.hpp"
+#include "../../include/Pokemon/PokemonType.hpp"
 #include "../../include/Utility/Utility.hpp"
 #include "../../include/Pokemon/Move.hpp"
 #include "../../include/Battle/BattleManager.hpp"
@@ -9,8 +9,6 @@ namespace N_Pokemon
 {
 	namespace N_Pokemons 
 	{
-		using namespace std;
-
 		Pidgey::Pidgey() :Pokemon("Pidgey", PokemonType::NORMAL, 100, {
 			Move("GUST", 15),
 			Move("TACKLE", 10)
@@ -18,21 +16,21 @@ namespace N_Pokemon
 		
 		void Pidgey::wingAttack(Pokemon* target) 
 		{
-			cout << name << " used WING ATTACK!\n";
+			std::cout << name << " used WING ATTACK!\n";
 			N_Utility::Utility::waitForEnter();
 
-			cout << "...\n";
+			std::cout << "...\n";
 			N_Utility::Utility::waitForEnter();
 
 			target->TakeDamage(attackPower);
 
 			if (target->isFainted()) 
 			{
-				cout << target->getName() << " fainted!\n";
+				std::cout << target->getName() << " fainted!\n";
 			}
 			else 
 			{
-				cout << target->getName() << " has " << target->getHealth() << " HP left.\n";
+				std::cout << target->getName() << " has " << target->getHealth() << " HP left.\n";
 			}
 
 			N_Utility::Utility::waitForEnter();
@@ -45,7 +43,7 @@ namespace N_Pokemon
 			{
 				if (rand() % 100 < 20)
 				{
-					cout << "... and blew the opponent away!\n";
+					std::cout << "... and blew the opponent away!\n";
 					N_Battle::BattleManager::stopBattle();
 					N_Utility::Utility::waitForEnter();
 				}

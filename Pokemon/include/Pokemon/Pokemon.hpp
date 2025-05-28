@@ -1,33 +1,40 @@
 #pragma once
 #include <string>
 #include <vector>
-using namespace std;
+#include "StatusEffects/StatusEffectType.hpp"
+#include "../../IStatusEffect.hpp"
 
 namespace N_Pokemon
 {
     struct Move;
     enum class PokemonType;
 
-    class  Pokemon
+    using namespace N_StatusEffects;
+
+    class Pokemon
     {
     protected:
-        string name;
+        std::string name;
         PokemonType type;
         int health;
         int maxHealth;
         int attackPower;
+
         void printAvailableMoves();
         int selectMove();
-        void useMove(Move selectedMove,Pokemon* target);
-        vector<Move> moves;
+        void useMove(Move selectedMove, Pokemon* target);
+
+        std::vector<Move> moves;
 
     public:
         Pokemon();
 
-        Pokemon(string p_name, PokemonType p_type, int p_health, int attackPower);
-        Pokemon(string p_name, PokemonType p_type, int p_health, vector<Move> availableMoves);
+        Pokemon(std::string p_name, PokemonType p_type, int p_health, int attackPower);
+        Pokemon(std::string p_name, PokemonType p_type, int p_health, std::vector<Move> availableMoves);
 
         Pokemon(const Pokemon& other);
+
+        IStatusEffect* appliedEffect;
 
         ~Pokemon();
         virtual void attack(Move selectedMove, Pokemon* target) = 0;
@@ -36,14 +43,16 @@ namespace N_Pokemon
         void reduceAttackPower(int reducedDamage);
 
         bool isFainted() const;
-
         void heal();
 
-        string getName() const;
+        std::string getName() const;
         int getHealth() const;
 
         void selectAndUseMove(Pokemon* target);
 
+        bool canAttack();
         void clearEffect();
+        bool canApplyEffect();
+        void applyEffect(N_StatusEffects::StatusEffectType effectToApply);
     };
 }

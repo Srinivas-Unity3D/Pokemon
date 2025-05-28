@@ -1,10 +1,11 @@
 #pragma once
 #include "IStatusEffect.hpp"
-using namespace std;
+#include "include/Pokemon/StatusEffects/StatusEffectType.hpp"
+#include <string>
 
 namespace N_Pokemon 
 {
-	namespace N_StatusEffect 
+	namespace N_StatusEffects 
 	{
 		class ParalyzedEffect : public IStatusEffect 
 		{
@@ -12,7 +13,7 @@ namespace N_Pokemon
 			int turnLeft;
 		public:
 			void applyEffect(Pokemon* target) override;
-			string getEffectName() override;
+			std::string getEffectName() override;
 			bool turnEndEffect(Pokemon* target) override;
 			void clearEffect(Pokemon* target) override;
 		};

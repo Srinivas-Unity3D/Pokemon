@@ -2,8 +2,10 @@
 #include "../../include/Pokemon/Move.hpp"
 #include "../../include/Pokemon/PokemonType.hpp"
 #include "../../include/Utility/Utility.hpp"
+#include "../../ParalyzedEffect.hpp"
 #include <iostream>
-#include<vector>
+#include <vector>
+#include <limits>
 
 namespace N_Pokemon
 {
@@ -14,15 +16,17 @@ namespace N_Pokemon
         health = 100;
     }
 
-    Pokemon::Pokemon(string p_name, PokemonType p_type, int p_health, int p_attackPower) {
+    Pokemon::Pokemon(std::string p_name, PokemonType p_type, int p_health, int p_attackPower) {
         name = p_name;
         type = p_type;
         maxHealth = p_health;
         attackPower = p_attackPower;
         health = maxHealth;
+
+        appliedEffect = nullptr;
     }
 
-    Pokemon::Pokemon(string p_name, PokemonType p_type, int p_health, vector<Move> _moves) {
+    Pokemon::Pokemon(std::string p_name, PokemonType p_type, int p_health, std::vector<Move> _moves) {
         name = p_name;
         type = p_type;
         maxHealth = p_health;
@@ -79,7 +83,7 @@ namespace N_Pokemon
         health = maxHealth;
     }
 
-    string Pokemon::getName() const 
+    std::string Pokemon::getName() const 
     {
         return name;
     }
@@ -100,10 +104,10 @@ namespace N_Pokemon
 
     void Pokemon::printAvailableMoves() 
     {
-        cout << name << "'s available moves:\n";
+        std::cout << name << "'s available moves:\n";
 
         for (size_t i = 0; i < moves.size(); ++i) {
-            cout << i + 1 << ": " << moves[i].name << " (Power: " << moves[i].power << ")\n";
+            std::cout << i + 1 << ": " << moves[i].name << " (Power: " << moves[i].power << ")\n";
         }
     }
 
@@ -112,8 +116,8 @@ namespace N_Pokemon
         int choice;
         while (true)
         {
-            cout << "Choose a move: ";
-            if (cin >> choice)
+            std::cout << "Choose a move: ";
+            if (std::cin >> choice)
             {
                 if (choice >= 1 && choice <= static_cast<int>(moves.size()))
                 {
@@ -121,35 +125,35 @@ namespace N_Pokemon
                 }
                 else
                 {
-                    cout << "Invalid choice. Please enter a number between 1 and " << moves.size() << ".\n";
+                    std::cout << "Invalid choice. Please enter a number between 1 and " << moves.size() << ".\n";
                 }
             }
             else
             {
-                cout << "Invalid input. Please enter a valid integer.\n";
-                cin.clear(); 
-                cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
+                std::cout << "Invalid input. Please enter a valid integer.\n";
+                std::cin.clear(); 
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); 
             }
         }
     }
 
     void Pokemon::useMove(Move selectedMove, Pokemon* target) 
     {
-        cout << name << " used " << selectedMove.name << "!\n";
+        std::cout << name << " used " << selectedMove.name << "!\n";
         attack(selectedMove, target);
 
         N_Utility::Utility::waitForEnter();
 
-        cout << "...\n";
+        std::cout << "...\n";
         N_Utility::Utility::waitForEnter();
 
         if (target->isFainted()) 
         {
-            cout << target->name << " fainted!\n";
+            std::cout << target->name << " fainted!\n";
         } 
         else 
         {
-            cout << target->name << " has " << target->health << " HP left.\n";
+            std::cout << target->name << " has " << target->health << " HP left.\n";
         }     
     }
 
@@ -157,4 +161,29 @@ namespace N_Pokemon
     {
         attackPower -= reducedDamage;
     }
+
+    bool Pokemon::canAttack()
+    {
+        if (appliedEffect == nullptr)
+            return true;
+        else
+            return appliedEffect->turnEndEffect(this);
+    }
+
+    bool Pokemon::canApplyEffect() { return appliedEffect == nullptr; }
+
+    void Pokemon::applyEffect(N_StatusEffects::StatusEffectType effectToApply)
+    {
+        switch (effectToApply)
+        {
+        case N_StatusEffects::StatusEffectType::PARALYZED:
+            appliedEffect = new N_StatusEffects::ParalyzedEffect();
+            appliedEffect->applyEffect(this);
+            break;
+        default:
+            appliedEffect = nullptr;
+        }
+    }
+
+    void Pokemon::clearEffect() { appliedEffect = nullptr; }
 }
