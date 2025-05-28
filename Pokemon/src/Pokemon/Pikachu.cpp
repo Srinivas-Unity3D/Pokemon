@@ -4,35 +4,33 @@
 #include "../../include/Pokemon/Move.hpp"
 #include <iostream>
 
-
 namespace N_Pokemon 
 {
 	namespace N_Pokemons 
 	{
-		using namespace std;
-
 		Pikachu::Pikachu() :Pokemon("Pikachu", PokemonType::ELECTRIC, 100, {
 			Move("THUNDER BOLT", 80),
-			Move("TACKLE", 10)
+			Move("THUNDER SHOCK", 20),
+			Move("QUICK ATTACK", 10)
 			}) {
 		}
 
 		void Pikachu::thunderShock(Pokemon* target) 
 		{
-			cout << name << " used Thunder Shock!\n";
+			std::cout << name << " used Thunder Shock!\n";
 			N_Utility::Utility::waitForEnter();
-			cout << "...\n";
+			std::cout << "...\n";
 			N_Utility::Utility::waitForEnter();
 
 			target->TakeDamage(attackPower);
 
 			if (target->isFainted())
 			{
-				cout << target->getName() << " fainted!\n";
+				std::cout << target->getName() << " fainted!\n";
 			}
 			else
 			{
-				cout << target->getName() << " has " << target->getHealth() << " HP left.\n";
+				std::cout << target->getName() << " has " << target->getHealth() << " HP left.\n";
 			}
 			N_Utility::Utility::waitForEnter();
 		}
@@ -43,14 +41,19 @@ namespace N_Pokemon
 				if (rand() % 100 < 80)
 				{
 					Pokemon::attack(selectedMove, target);
-					cout << "... and it hit successfully!\n";
+					std::cout << "... and it hit successfully!\n";
 				}
 				else
-					cout << "... but it missed!\n";
+					std::cout << "... but it missed!\n";
 			}
 			else
 				Pokemon::attack(selectedMove, target);
 
+			if (selectedMove.name == "THUNDER SHOCK")
+			{
+				if (target->canApplyEffect())
+					target->applyEffect(N_StatusEffects::StatusEffectType::PARALYZED);
+			}
 		}
 	}
 }
